@@ -1,13 +1,12 @@
-﻿using SwaggerTest.Models;
-using SwaggerTest.Repository;
+﻿using WebApi.Models;
+using WebApi.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using System.Threading.Tasks;
 
-namespace SwaggerTest.Controllers
+namespace WebApi.Controllers
 {
     public class ActorController : ApiController
     {
@@ -20,27 +19,37 @@ namespace SwaggerTest.Controllers
         }
 
         // GET: api/Actor/5
-        public Actor Get(Guid id)
+        public async Task<IHttpActionResult> Get(Guid id)
         {
-            return _actorRepository.Get(id);
+            return Ok(await _actorRepository.Get(id));
         }
 
         // POST: api/Actor
-        public void Post([FromBody]Actor value)
+        public async Task<IHttpActionResult> Post([FromBody]Actor actor)
         {
-            _actorRepository.Save(value);
+            await _actorRepository.Save(actor);
+            return Ok();
         }
 
         // PUT: api/Actor/5
-        public void Put(Guid id, [FromBody]Actor value)
+        public async Task<IHttpActionResult> Put(Guid id, [FromBody]Actor actor)
         {
-            _actorRepository.Update(id, value);
+            var original = await _actorRepository.Get(id);
+            if (original == null)
+                return NotFound();
+
+            original.Name = actor.Name;
+            original.Birthday = actor.Birthday;
+            original.Gender = actor.Gender;
+
+            return Ok();
         }
 
         // DELETE: api/Actor/5
-        public void Delete(Guid id)
+        public async Task<IHttpActionResult> Delete(Guid id)
         {
-            _actorRepository.Delete(id);
+            await _actorRepository.Delete(id);
+            return Ok();
         }
     }
 }

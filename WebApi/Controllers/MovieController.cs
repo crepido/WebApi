@@ -1,13 +1,12 @@
-﻿using SwaggerTest.Models;
-using SwaggerTest.Repository;
+﻿using WebApi.Models;
+using WebApi.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace SwaggerTest.Controllers
+namespace WebApi.Controllers
 {
     public class MovieController : ApiController
     {
@@ -20,27 +19,36 @@ namespace SwaggerTest.Controllers
         }
 
         // GET: api/Movie/5
-        public Movie Get(Guid id)
+        public async Task<IHttpActionResult> Get(Guid id)
         {
-            return _movieRepository.Get(id);
+            return Ok(await _movieRepository.Get(id));
         }
 
         // POST: api/Movie
-        public void Post([FromBody]Movie movie)
+        public async Task<IHttpActionResult> Post([FromBody]Movie movie)
         {
-            _movieRepository.Save(movie);
+            await _movieRepository.Save(movie);
+            return Ok();
         }
 
         // PUT: api/Movie/5
-        public void Put(Guid id, [FromBody]Movie movie)
+        public async Task<IHttpActionResult> Put(Guid id, [FromBody]Movie movie)
         {
-            _movieRepository.Update(id, movie);
+            var original = await _movieRepository.Get(id);
+            if (original == null)
+                return NotFound();
+
+            original.Rating = movie.Rating;
+            original.Title = movie.Title;
+
+            return Ok();
         }
 
         // DELETE: api/Movie/5
-        public void Delete(Guid id)
+        public async Task<IHttpActionResult> Delete(Guid id)
         {
-            _movieRepository.Delete(id);
+            await _movieRepository.Delete(id);
+            return Ok();
         }
     }
 }

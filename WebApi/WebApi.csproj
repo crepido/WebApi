@@ -50,11 +50,29 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.1.0.0\lib\netstandard1.1\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.OData.Core, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.OData.Core.7.0.0\lib\portable-net45+win8+wpa81\Microsoft.OData.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.OData.Edm, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.OData.Edm.7.0.0\lib\portable-net45+win8+wpa81\Microsoft.OData.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Spatial, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Spatial.7.0.0\lib\portable-net45+win8+wpa81\Microsoft.Spatial.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
       <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Swashbuckle.OData, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a2e252c86e553959, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.OData.3.4.0\lib\net452\Swashbuckle.OData.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -65,6 +83,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.OData, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.OData.6.0.0\lib\net45\System.Web.OData.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -162,6 +183,7 @@
     <Compile Include="Controllers\ActorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
+    <Compile Include="Controllers\ODataMovieController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
